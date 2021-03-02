@@ -4,7 +4,7 @@ import TransactionCard from "./TransactionCard";
 const TransactionHistory = ({ transactions }) => {
   return (
     <div>
-      <h1>History</h1>
+      <h3>Transaction History</h3>
       {transactions &&
         transactions.map((transaction) => {
           return (

@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { removeTransaction } from "../store/actions/transactionAction";
+import "./TransactionCard.css";
+import { MdDelete } from "react-icons/md";
 
 const TransactionCard = ({ transaction }) => {
   const dispatch = useDispatch();
@@ -9,19 +11,24 @@ const TransactionCard = ({ transaction }) => {
   };
 
   return (
-    <div>
-      <p>{transaction.name}</p>
-      <p>{transaction.amount}</p>
-      {JSON.stringify(transaction)}
+    <li
+      className={transaction.category === "income" ? "list plus" : "list minus"}
+    >
+      <span>{transaction.name}</span>
+      <span>
+        {transaction.category === "income" ? "+" : ""}
+        {transaction.amount}
+      </span>
       <button
         type="button"
+        className="delete-btn"
         onClick={() => {
           handleDelete(transaction._id);
         }}
       >
-        Delete
+        <MdDelete />
       </button>
-    </div>
+    </li>
   );
 };
 
